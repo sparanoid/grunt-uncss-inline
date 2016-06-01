@@ -6,7 +6,7 @@
 [![Dependency Status](https://img.shields.io/david/sparanoid/grunt-uncss-inline.svg)](https://david-dm.org/sparanoid/grunt-uncss-inline)
 [![devDependency Status](https://img.shields.io/david/dev/sparanoid/grunt-uncss-inline.svg)](https://david-dm.org/sparanoid/grunt-uncss-inline#info=devDependencies)
 
-> A fork of [grunt-uncss](https://github.com/addyosmani/grunt-uncss) doing the exact same thing, but does focus on processing the inlined CSS only.
+> A fork of [grunt-uncss](https://github.com/addyosmani/grunt-uncss) doing the exact same thing, but does focus on processing the inline CSS only.
 
 ## Getting Started
 
@@ -29,7 +29,16 @@ grunt.loadNpmTasks('grunt-uncss-inline');
 
 **Original usage examples should head to [addyosmani/grunt-uncss](https://github.com/addyosmani/grunt-uncss).**
 
-## Usage examples
+## Overview
+
+This plugin do the following things:
+
+1. Search all `<style>` tags and combine all the inline CSS into one in the searching order.
+2. Pass combined inline CSS to `uncss` for the cleanup.
+3. Save cleaned CSS to the first `<style>` found in the DOM.
+4. Remove all other deprecated `<style>` tags.
+
+Basic usage for `Gruntfile.coffee`:
 
 ```coffee
 uncss:
@@ -41,6 +50,10 @@ uncss:
       dest: "dist/"
     ]
 ```
+
+## Limitations
+
+Doesn't work well with scoped CSS at the moment.
 
 ## Fork Maintainers
 
