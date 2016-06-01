@@ -1,10 +1,10 @@
-# grunt-uncss [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# grunt-uncss-inline [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-[![NPM version](https://img.shields.io/npm/v/grunt-uncss.svg?)](https://www.npmjs.com/package/grunt-uncss)
-[![Linux Build Status](https://img.shields.io/travis/addyosmani/grunt-uncss/master.svg?label=Linux%20build)](https://travis-ci.org/addyosmani/grunt-uncss)
-[![Windows Build status](https://img.shields.io/appveyor/ci/addyosmani/grunt-uncss/master.svg?label=Windows%20build)](https://ci.appveyor.com/project/addyosmani/grunt-uncss/branch/master)
-[![Dependency Status](https://img.shields.io/david/addyosmani/grunt-uncss.svg)](https://david-dm.org/addyosmani/grunt-uncss)
-[![devDependency Status](https://img.shields.io/david/dev/addyosmani/grunt-uncss.svg)](https://david-dm.org/addyosmani/grunt-uncss#info=devDependencies)
+[![NPM version](https://img.shields.io/npm/v/grunt-uncss-inline.svg?)](https://www.npmjs.com/package/grunt-uncss-inline)
+[![Linux Build Status](https://img.shields.io/travis/sparanoid/grunt-uncss-inline/master.svg?label=Linux%20build)](https://travis-ci.org/sparanoid/grunt-uncss-inline)
+[![Windows Build status](https://img.shields.io/appveyor/ci/sparanoid/grunt-uncss-inline/master.svg?label=Windows%20build)](https://ci.appveyor.com/project/sparanoid/grunt-uncss-inline/branch/master)
+[![Dependency Status](https://img.shields.io/david/sparanoid/grunt-uncss-inline.svg)](https://david-dm.org/sparanoid/grunt-uncss-inline)
+[![devDependency Status](https://img.shields.io/david/dev/sparanoid/grunt-uncss-inline.svg)](https://david-dm.org/sparanoid/grunt-uncss-inline#info=devDependencies)
 
 >A grunt task for removing unused CSS from your projects with [UnCSS](https://github.com/giakki/uncss). Works across multiple files and supports dynamically injected CSS via PhantomJS.
 
@@ -16,13 +16,13 @@ a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Gr
 Once you're familiar with that process, you may install this plugin with this command:
 
 ```shell
-npm install grunt-uncss --save-dev
+npm install grunt-uncss-inline --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-uncss');
+grunt.loadNpmTasks('grunt-uncss-inline');
 ```
 
 **Issues with the output should be reported on the UnCSS [issue tracker](https://github.com/giakki/uncss/issues).**
@@ -35,7 +35,7 @@ Taking a multi-page project using Bootstrap with >120KB of CSS down to 11KB.
 
 ## Uncss task
 
-*Run this task with the `grunt uncss` command.*
+*Run this task with the `grunt uncss_inline` command.*
 
 Task targets, files and options may be specified according to the grunt [Configuring tasks](http://gruntjs.com/configuring-tasks) guide.
 
@@ -53,20 +53,21 @@ This is useful to see exactly how well clean-css is performing but using `'gzip'
 
 ## Usage examples
 
-Use the `grunt-uncss` task by specifying a target destination (file) for your cleaned CSS.
+Use the `grunt-uncss-inline` task by specifying a target destination (file) for your cleaned CSS.
 Below this is `dist/css/tidy.css`.
 
 Along-side, specify the input HTML files you would like scanned for used selectors.
 In this case `app/index.html` and `app/about.html` are the two files we would like checked.
 
-```js
-uncss: {
-  dist: {
-    files: {
-      'dist/css/tidy.css': ['app/index.html', 'app/about.html']
-    }
-  }
-}
+```coffee
+uncss:
+  dist:
+    files: [
+      expand: true
+      cwd: "dist/"
+      src: "**/*.html"
+      dest: "dist/"
+    ]
 ```
 
 Which you can then use alongside a processor like
