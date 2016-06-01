@@ -1,3 +1,15 @@
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.0.0...v1.0.1) (2016-06-01)
+
+
+### Features
+
+* preserve the first  for final process ([fc7cfa4](https://github.com/sparanoid/grunt-uncss-inline/commit/fc7cfa4))
+* rename script ([af4a3e1](https://github.com/sparanoid/grunt-uncss-inline/commit/af4a3e1))
+* **docs:** update readme and project description ([3b5dbfb](https://github.com/sparanoid/grunt-uncss-inline/commit/3b5dbfb))
+
+
+
 <a name="1.0.0"></a>
 # [1.0.0](https://github.com/sparanoid/grunt-uncss-inline/compare/v0.5.1...v1.0.0) (2016-06-01)
 
