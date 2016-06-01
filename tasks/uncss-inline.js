@@ -66,9 +66,8 @@ module.exports = function ( grunt ) {
             throw error;
           }
 
-          // remove all `<style>` tags except the last one
-          var styleTags = $('style');
-          styleTags.slice(0, styleTags.length - 1).remove();
+          // remove all `<style>` tags except the first one
+          $('style').slice(1).remove();
           $('style').text(output);
           var html = $.html();
           grunt.file.write( file.dest, html );
