@@ -124,8 +124,34 @@ module.exports = function(grunt) {
     watch: {
       files: ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.*'],
       tasks: ['jshint', 'test']
-    }
+    },
 
+    conventionalChangelog: {
+      options: {
+        changelogOpts: {
+          preset: 'angular'
+        }
+      },
+      dist: {
+        src: 'CHANGELOG.md'
+      }
+    },
+
+    bump: {
+      options: {
+        files: ['package.json'],
+        commitMessage: 'chore: release v%VERSION%',
+        commitFiles: ['-a'],
+        tagMessage: 'chore: create tag %VERSION%',
+        push: false
+      }
+    },
+
+    'npm-contributors': {
+      options: {
+        commitMessage: 'chore: update contributors'
+      }
+    }
   });
 
   // Actually load this plugin's task(s).
@@ -144,6 +170,16 @@ module.exports = function(grunt) {
     'connect',
     'watch'
   ]);
+
+  grunt.registerTask('release', 'bump, changelog and publish to npm.', function(type) {
+    grunt.task.run([
+      'npm-contributors',
+      'bump:' + (type || 'patch') + ':bump-only',
+      'conventionalChangelog',
+      'bump-commit',
+      'npm-publish'
+    ]);
+  });
 
   // By default, lint and run all tests.
   grunt.registerTask('default', [
