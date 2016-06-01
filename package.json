@@ -1,19 +1,20 @@
 {
-  "name": "grunt-uncss",
+  "name": "grunt-uncss-inline",
   "description": "A grunt task for generating CSS files containing only those styles used in your project.",
   "version": "0.5.1",
-  "homepage": "https://github.com/addyosmani/grunt-uncss",
-  "author": "Addy Osmani <addyosmani@gmail.com> (http://addyosmani.com)",
+  "homepage": "https://github.com/sparanoid/grunt-uncss-inline",
+  "author": "Tunghsiao Liu <t@sparanoid.com> (https://github.com/sparanoid)",
   "maintainers": [
     "Addy Osmani <addyosmani@gmail.com> (http://addyosmani.com)",
-    "XhmikosR <xhmikosr@gmail.com> (https://github.com/XhmikosR)"
+    "XhmikosR <xhmikosr@gmail.com> (https://github.com/XhmikosR)",
+    "Tunghsiao Liu <t@sparanoid.com> (https://github.com/sparanoid)"
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/addyosmani/grunt-uncss.git"
+    "url": "git+https://github.com/sparanoid/grunt-uncss-inline.git"
   },
   "bugs": {
-    "url": "https://github.com/addyosmani/grunt-uncss/issues"
+    "url": "https://github.com/sparanoid/grunt-uncss-inline/issues"
   },
   "license": "MIT",
   "keywords": [
@@ -35,6 +36,7 @@
   "dependencies": {
     "async": "^1.5.0",
     "chalk": "^1.1.0",
+    "cheerio": "^0.20.0",
     "maxmin": "^2.1.0",
     "uncss": "^0.13.0"
   },

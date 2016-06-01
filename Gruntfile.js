@@ -1,4 +1,11 @@
 /*
+ * grunt-uncss-inline
+ * https://github.com/sparanoid/grunt-uncss-inline
+ *
+ * Copyright (c) 2016 Tunghsiao Liu
+ * Licensed under the MIT license.
+ */
+/*
  * grunt-uncss
  * https://github.com/addyosmani/grunt-uncss
  *
@@ -33,7 +40,7 @@ module.exports = function(grunt) {
       tests: ['tmp', 'dist', 'tests/output.css']
     },
 
-    uncss: {
+    uncss_inline: {
       dist: {
         src: ['tests/app/about.html', 'tests/app/contact.html', 'tests/app/index.html'],
         dest: 'dist/css/tidy.css'
@@ -126,9 +133,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'jshint',
-    'uncss:test',
-    'uncss:testMany',
-    'uncss:testUncssrc',
+    'uncss_inline:test',
+    'uncss_inline:testMany',
+    'uncss_inline:testUncssrc',
     'simplemocha'
   ]);
 
@@ -142,7 +149,7 @@ module.exports = function(grunt) {
   grunt.registerTask('default', [
     'clean',
     'copy',
-    'uncss:dist',
+    'uncss_inline:dist',
     'cssmin',
     'processhtml'
   ]);
