@@ -36,7 +36,7 @@
   "dependencies": {
     "async": "^1.5.0",
     "chalk": "^1.1.0",
-    "cheerio": "^0.20.0",
+    "cheerio": "^0.22.0",
     "maxmin": "^2.1.0",
     "uncss": "^0.14.0"
   },
