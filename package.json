@@ -1,7 +1,7 @@
 {
   "name": "grunt-uncss-inline",
   "description": "A fork of addyosmani/grunt-uncss doing the exact same thing, but does focus on processing the inline CSS only.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/sparanoid/grunt-uncss-inline",
   "author": "Tunghsiao Liu <t@sparanoid.com> (https://github.com/sparanoid)",
   "maintainers": [
