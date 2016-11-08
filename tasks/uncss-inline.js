@@ -27,7 +27,11 @@ module.exports = function ( grunt ) {
 
     var done = this.async();
     var options = this.options({
-      report: 'min'
+      report: 'min',
+      // We need to ignore ALL stylesheets (.css in <link>) in order for this
+      // plugin to work properly. Since we're only focus on inlined stylesheets
+      // in <style> tags.
+      ignoreSheets: [/.*/]
     });
 
     function processFile ( file, done ) {
@@ -52,13 +56,19 @@ module.exports = function ( grunt ) {
       }
 
       var styles = [];
-      $('style').each(function () {
-        var style = $(this).html();
-        if (style) {
-          styles.push(style);
-          options.raw = styles.join(' ');
-        }
-      });
+      if ($('style').length) {
+        $('style').each(function () {
+          var style = $(this).html();
+          if (style) {
+            styles.push(style);
+            options.raw = styles.join(' ');
+          }
+        });
+      } else {
+        // This is tricky but it works, if no stylesheets found, just throw a
+        // blank string to UnCSS to avoid "no stylesheets" error.
+        options.raw = ' ';
+      }
 
       try {
         uncss( src, options, function ( error, output, report ) {
