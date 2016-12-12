@@ -28,6 +28,7 @@ module.exports = function ( grunt ) {
     var done = this.async();
     var options = this.options({
       report: 'min',
+      ignore: [/\.js/, /#js/],
       // We need to ignore ALL stylesheets (.css in <link>) in order for this
       // plugin to work properly. Since we're only focus on inlined stylesheets
       // in <style> tags.
