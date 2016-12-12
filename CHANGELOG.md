@@ -1,3 +1,13 @@
+<a name="1.0.5"></a>
+## [1.0.5](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.0.4...v1.0.5) (2016-12-12)
+
+
+### Features
+
+* ignore js specific styles ([ea30208](https://github.com/sparanoid/grunt-uncss-inline/commit/ea30208))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.0.3...v1.0.4) (2016-11-08)
 
