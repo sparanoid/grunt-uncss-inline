@@ -1,5 +1,7 @@
 # grunt-uncss-inline [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/sparanoid/grunt-uncss-inline.svg)](https://greenkeeper.io/)
+
 [![NPM version](https://img.shields.io/npm/v/grunt-uncss-inline.svg?)](https://www.npmjs.com/package/grunt-uncss-inline)
 [![Linux Build Status](https://img.shields.io/travis/sparanoid/grunt-uncss-inline/master.svg?label=Linux%20build)](https://travis-ci.org/sparanoid/grunt-uncss-inline)
 [![Windows Build status](https://img.shields.io/appveyor/ci/sparanoid/grunt-uncss-inline/master.svg?label=Windows%20build)](https://ci.appveyor.com/project/sparanoid/grunt-uncss-inline/branch/master)
