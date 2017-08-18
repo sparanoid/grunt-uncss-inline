@@ -1,3 +1,18 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.0.5...v1.1.0) (2017-08-18)
+
+
+### Bug Fixes
+
+* **package:** update chalk to version 2.0.0 ([#15](https://github.com/sparanoid/grunt-uncss-inline/issues/15)) ([29686eb](https://github.com/sparanoid/grunt-uncss-inline/commit/29686eb))
+
+
+### Features
+
+* **travis:** remove old node version ([edbb08d](https://github.com/sparanoid/grunt-uncss-inline/commit/edbb08d))
+
+
+
 <a name="1.0.5"></a>
 ## [1.0.5](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.0.4...v1.0.5) (2016-12-12)
 
