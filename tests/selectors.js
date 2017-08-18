@@ -31,7 +31,10 @@ describe( 'uncss', function () {
     /* Wait until uncss finished doing its thing before running our tests */
     before( function ( done ) {
         /* new api from issue #44 */
-        uncss( rfs( 'index.html' ), { csspath: 'tests' }, function ( err, output ) {
+        uncss( rfs( 'index.html' ), {
+            csspath: 'tests'
+        }, function ( err, output ) {
+
             if ( err ) {
                 throw err;
             }
@@ -50,7 +53,11 @@ describe( 'uncss', function () {
     });
 
     it( 'should read .uncssrc files', function () {
-        uncss( rfs('index.html'), { uncssrc: path.normalize('tests/.uncssrc') }, function ( err, res, report ) {
+        uncss( rfs('index.html'), {
+            csspath: 'tests',
+            report: true,
+            uncssrc: path.normalize('tests/.uncssrc')
+        }, function ( err, res, report ) {
             expect( err ).to.equal( null );
             expect( res ).to.equal( rawcss );
             expect( report.original ).not.to.equal( null );
