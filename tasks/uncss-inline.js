@@ -36,6 +36,8 @@ module.exports = function ( grunt ) {
     });
 
     function processFile ( file, done ) {
+      // Create a local options instance in order to not affect other files.
+      var local_options = Object.assign({}, options);
 
       // Get stylesheets from inline <style>
       var $ = cheerio.load(grunt.file.read(file.src), {
@@ -62,17 +64,17 @@ module.exports = function ( grunt ) {
           var style = $(this).html();
           if (style) {
             styles.push(style);
-            options.raw = styles.join(' ');
+            local_options.raw = styles.join(' ');
           }
         });
       } else {
         // This is tricky but it works, if no stylesheets found, just throw a
         // blank string to UnCSS to avoid "no stylesheets" error.
-        options.raw = ' ';
+        local_options.raw = ' ';
       }
 
       try {
-        uncss( src, options, function ( error, output, report ) {
+        uncss( src, local_options, function ( error, output, report ) {
           if ( error ) {
             throw error;
           }
@@ -83,9 +85,9 @@ module.exports = function ( grunt ) {
           var html = $.html();
           grunt.file.write( file.dest, html );
 
-          grunt.log.writeln('File ' + chalk.cyan( file.dest ) + ' created: ' + maxmin( report.original, output, options.report === 'gzip' ) );
-          if (typeof(options.reportFile) !== 'undefined' && options.reportFile.length > 0) {
-            grunt.file.write(options.reportFile, JSON.stringify(report));
+          grunt.log.writeln('File ' + chalk.cyan( file.dest ) + ' created: ' + maxmin( report.original, output, local_options.report === 'gzip' ) );
+          if (typeof(local_options.reportFile) !== 'undefined' && local_options.reportFile.length > 0) {
+            grunt.file.write(local_options.reportFile, JSON.stringify(report));
           }
           done();
         });
