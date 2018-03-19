@@ -1,3 +1,8 @@
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.1.0...v1.1.1) (2018-03-19)
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.0.5...v1.1.0) (2017-08-18)
 
