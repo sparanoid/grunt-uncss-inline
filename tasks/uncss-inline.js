@@ -24,6 +24,7 @@ module.exports = function ( grunt ) {
       cheerio = require( 'cheerio' );
 
   grunt.registerMultiTask( 'uncss_inline', 'Remove unused CSS', function () {
+    var style_selector = 'style:not([amp-boilerplate])';
 
     var done = this.async();
     var options = this.options({
@@ -59,8 +60,8 @@ module.exports = function ( grunt ) {
       }
 
       var styles = [];
-      if ($('style').length) {
-        $('style').each(function () {
+      if ($(style_selector).length) {
+        $(style_selector).each(function () {
           var style = $(this).html();
           if (style) {
             styles.push(style);
@@ -80,8 +81,8 @@ module.exports = function ( grunt ) {
           }
 
           // remove all `<style>` tags except the first one
-          $('style').slice(1).remove();
-          $('style').text(output);
+          $(style_selector).slice(1).remove();
+          $(style_selector).text(output);
           var html = $.html();
           grunt.file.write( file.dest, html );
 
