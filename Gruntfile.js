@@ -19,7 +19,7 @@
 
 module.exports = function(grunt) {
 
-  require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
+  require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
   require('time-grunt')(grunt);
 
   // Project configuration.
@@ -65,6 +65,14 @@ module.exports = function(grunt) {
       testUncssrc: {
         files: {
           'tests/output.css': 'tests/index.html'
+        },
+        options: {
+          uncssrc: 'tests/.uncssrc'
+        }
+      },
+      testSvg: {
+        files: {
+          'tests/index3.ouput.html': 'tests/index3.html'
         },
         options: {
           uncssrc: 'tests/.uncssrc'
@@ -162,6 +170,7 @@ module.exports = function(grunt) {
     'uncss_inline:test',
     'uncss_inline:testMany',
     'uncss_inline:testUncssrc',
+    'uncss_inline:testSvg',
     'simplemocha'
   ]);
 
