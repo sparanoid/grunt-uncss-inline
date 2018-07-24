@@ -26,7 +26,7 @@ module.exports = function(grunt) {
   var { JSDOM } = jsdom;
 
   grunt.registerMultiTask('uncss_inline', 'Remove unused CSS', function() {
-    var style_selector = 'style:not([amp-boilerplate])';
+    var style_selector = 'style:not([amp-boilerplate]):not([scoped])';
 
     var done = this.async();
     var options = this.options({
