@@ -1,3 +1,13 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.2.0...v1.2.1) (2018-07-24)
+
+
+### Bug Fixes
+
+* scoped styles are not ignored ([a3576bf](https://github.com/sparanoid/grunt-uncss-inline/commit/a3576bf))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.1.1...v1.2.0) (2018-07-24)
 
