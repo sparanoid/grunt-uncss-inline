@@ -1,3 +1,13 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.1.1...v1.2.0) (2018-07-24)
+
+
+### Features
+
+* switch from cheerio to jsdom ([0dd9165](https://github.com/sparanoid/grunt-uncss-inline/commit/0dd9165))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.1.0...v1.1.1) (2018-03-19)
 
