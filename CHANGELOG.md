@@ -1,3 +1,13 @@
+<a name="1.2.2"></a>
+## [1.2.2](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.2.1...v1.2.2) (2018-08-20)
+
+
+### Bug Fixes
+
+* **package:** update jsdom to version 12.0.0 ([1c3d691](https://github.com/sparanoid/grunt-uncss-inline/commit/1c3d691))
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.2.0...v1.2.1) (2018-07-24)
 
