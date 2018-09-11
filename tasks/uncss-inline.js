@@ -2,7 +2,7 @@
  * grunt-uncss-inline
  * https://github.com/sparanoid/grunt-uncss-inline
  *
- * Copyright (c) 2017 Sparanoid
+ * Copyright (c) 2017-2018 Sparanoid
  * Licensed under the MIT license.
  */
 /**
