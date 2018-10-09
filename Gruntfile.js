@@ -80,39 +80,6 @@ module.exports = function(grunt) {
       }
     },
 
-    processhtml: {
-      dist: {
-        files: {
-          'dist/about.html': 'tests/app/about.html',
-          'dist/contact.html': 'tests/app/contact.html',
-          'dist/index.html': 'tests/app/index.html'
-        }
-      }
-    },
-
-    cssmin: {
-      dist: {
-        options: {
-          compatibility: 'ie8',
-          keepSpecialComments: 0
-        },
-        files: {
-          '<%= uncss.dist.dest %>': '<%= uncss.dist.dest %>'
-        }
-      }
-    },
-
-    copy: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: 'tests/app/',
-          src: ['img/**', 'js/**', '*.png', '*.xml', '*.txt', '*.ico', '!*.html'],
-          dest: 'dist/'
-        }]
-      }
-    },
-
     // Unit tests.
     simplemocha: {
       test: {
@@ -192,11 +159,7 @@ module.exports = function(grunt) {
 
   // By default, lint and run all tests.
   grunt.registerTask('default', [
-    'clean',
-    'copy',
-    'uncss_inline:dist',
-    'cssmin',
-    'processhtml'
+    'test'
   ]);
 
 };
