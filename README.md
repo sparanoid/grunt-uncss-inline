@@ -36,12 +36,15 @@ This plugin do the following things:
 1. Search all `<style>` tags and combine all the inline CSS into one in the searching order.
 2. Pass combined inline CSS to `uncss` for the cleanup.
 3. Save cleaned CSS to the first `<style>` found in the DOM.
-4. Remove all other deprecated `<style>` tags.
+4. Remove all other processed `<style>` tags.
 
-Basic usage for `Gruntfile.coffee`:
+Example configurations for `Gruntfile.coffee` (all `uncss_inline` specific default options included):
 
 ```coffee
-uncss:
+uncss_inline:
+  options:
+    style_selector: 'style:not([amp-boilerplate]):not([scoped])'
+
   dist:
     files: [
       expand: true

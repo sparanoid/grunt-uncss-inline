@@ -13,43 +13,45 @@
  * Licensed under the MIT license.
  */
 
-module.exports = function(grunt) {
+'use strict';
 
-  'use strict';
+const uncss = require('uncss');
+const chalk = require('chalk');
+const maxmin = require('maxmin');
+const jsdom = require('jsdom');
 
-  var uncss = require('uncss'),
-    chalk = require('chalk'),
-    maxmin = require('maxmin'),
-    async = require('async'),
-    jsdom = require('jsdom');
-
-  var { JSDOM } = jsdom;
-
-  grunt.registerMultiTask('uncss_inline', 'Remove unused CSS', function() {
-    var style_selector = 'style:not([amp-boilerplate]):not([scoped])';
-
-    var done = this.async();
-    var options = this.options({
+module.exports = function (grunt) {
+  grunt.registerMultiTask('uncss_inline', 'Remove unused CSS', function () {
+    const done = this.async();
+    const options = this.options({
       report: 'min',
       ignore: [/\.js/, /#js/],
+
       // We need to ignore ALL stylesheets (.css in <link>) in order for this
       // plugin to work properly. Since we're only focus on inlined stylesheets
       // in <style> tags.
-      ignoreSheets: [/.*/]
+      ignoreSheets: [/.*/],
+
+      // uncss_inline specific options
+      style_selector: 'style:not([amp-boilerplate]):not([scoped])'
     });
 
-    function processFile(file, done) {
-      // Create a local options instance in order to not affect other files.
-      var local_options = Object.assign({}, options);
+    const { JSDOM } = jsdom;
+    const created = {
+      files: 0,
+      blocks: 0
+    };
+
+    this.files.forEach(file => {
 
       // Get stylesheets from inline <style>
       var dom = new JSDOM(grunt.file.read(file.src));
       var doc = dom.window.document;
 
-      var src = file.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
+      var src = file.src.filter(filepath => {
         if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file ' + chalk.cyan(filepath) + ' not found.');
+          // Warn on and remove invalid local source files (if nonull was set).
+          grunt.log.warn(`Source file ${chalk.cyan(filepath)} not found.`);
           return false;
         } else {
           return true;
@@ -57,10 +59,13 @@ module.exports = function(grunt) {
       });
 
       if (src.length === 0 && file.src.length === 0) {
-        grunt.fail.warn('Destination (' + file.dest + ') not written because src files were empty.');
+        grunt.fail.warn(`Destination (${file.dest}) not written because src files were empty.`);
       }
 
-      var styles_dom = doc.querySelectorAll(style_selector);
+      // Store cached file
+      created.files++;
+
+      var styles_dom = doc.querySelectorAll(options.style_selector);
       var styles = [];
 
       if (styles_dom.length) {
@@ -69,7 +74,9 @@ module.exports = function(grunt) {
 
           if (style) {
             styles.push(style);
-            local_options.raw = styles.join(' ');
+            created.blocks++;
+
+            options.raw = styles.join(' ');
 
             // Remove all inline style tag except the first one
             if (i !== 0) {
@@ -80,11 +87,11 @@ module.exports = function(grunt) {
       } else {
         // This is tricky but it works, if no stylesheets found, just throw a
         // blank string to UnCSS to avoid "no stylesheets" error.
-        local_options.raw = ' ';
+        options.raw = ' ';
       }
 
       try {
-        uncss(src, local_options, function(error, output, report) {
+        uncss(src, options, (error, output, report) => {
           if (error) {
             throw error;
           }
@@ -95,33 +102,32 @@ module.exports = function(grunt) {
 
           var html = dom.serialize();
           grunt.file.write(file.dest, html);
+          grunt.verbose.writeln(`File ${chalk.cyan(file.dest)} created: ${maxmin(report.original, output, options.report === 'gzip')}`);
 
-          grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created: ' + maxmin(report.original, output, local_options.report === 'gzip'));
-          if (typeof(local_options.reportFile) !== 'undefined' && local_options.reportFile.length > 0) {
-            grunt.file.write(local_options.reportFile, JSON.stringify(report));
+          if (typeof options.reportFile !== 'undefined' && options.reportFile.length > 0) {
+            grunt.file.write(options.reportFile, JSON.stringify(report));
           }
+
           done();
         });
-      } catch (e) {
-        var err = new Error('Uncss failed.');
-        if (e.msg) {
-          err.message += ', ' + e.msg + '.';
+      } catch (err) {
+        const error = new Error('Uncss failed.');
+
+        if (err.msg) {
+          error.message += `, ${err.msg}.`;
         }
-        err.origError = e;
-        grunt.log.warn('Uncssing source "' + src + '" failed.');
-        grunt.fail.warn(err);
+
+        error.origError = err;
+        grunt.log.warn(`Uncssing source "${src}" failed.`);
+        grunt.fail.warn(error);
       }
 
-    }
+    });
 
-    if (this.files.length === 1) {
-      processFile(this.files[0], done);
+    if (created.files > 0) {
+      grunt.log.ok(`${created.files} ${grunt.util.pluralize(created.files, 'file/files')} created, ${created.blocks} style ${grunt.util.pluralize(created.blocks, 'block/blocks')} processed.`);
     } else {
-      // Processing multiple files must be done sequentially
-      // until https://github.com/giakki/uncss/issues/136 is resolved.
-      async.eachSeries(this.files, processFile, done);
+      grunt.log.warn('No files created.');
     }
-
   });
-
 };
