@@ -1,3 +1,13 @@
+<a name="1.2.4"></a>
+## [1.2.4](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.2.3...v1.2.4) (2018-10-17)
+
+
+### Features
+
+* update output ([057a502](https://github.com/sparanoid/grunt-uncss-inline/commit/057a502))
+
+
+
 <a name="1.2.3"></a>
 ## [1.2.3](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.2.2...v1.2.3) (2018-09-11)
 
