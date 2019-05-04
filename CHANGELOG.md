@@ -1,3 +1,19 @@
+<a name="1.2.6"></a>
+## [1.2.6](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.2.5...v1.2.6) (2019-05-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency jsdom to v14 ([732a5f9](https://github.com/sparanoid/grunt-uncss-inline/commit/732a5f9))
+* **deps:** update dependency jsdom to v15 ([92b18c7](https://github.com/sparanoid/grunt-uncss-inline/commit/92b18c7))
+
+
+### Features
+
+* update deps ([2ea8e56](https://github.com/sparanoid/grunt-uncss-inline/commit/2ea8e56))
+
+
+
 <a name="1.2.5"></a>
 ## [1.2.5](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.2.4...v1.2.5) (2018-10-30)
 
