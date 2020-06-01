@@ -1,3 +1,13 @@
+<a name="1.2.7"></a>
+## [1.2.7](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.2.6...v1.2.7) (2020-06-01)
+
+
+### Features
+
+* update deps ([f0365b4](https://github.com/sparanoid/grunt-uncss-inline/commit/f0365b4))
+
+
+
 <a name="1.2.6"></a>
 ## [1.2.6](https://github.com/sparanoid/grunt-uncss-inline/compare/v1.2.5...v1.2.6) (2019-05-04)
 
