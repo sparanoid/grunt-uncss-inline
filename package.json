@@ -36,7 +36,7 @@
   "dependencies": {
     "async": "^3.2.0",
     "chalk": "^4.0.0",
-    "jsdom": "^16.2.2",
+    "jsdom": "^24.0.0",
     "maxmin": "^2.1.0",
     "uncss": "^0.17.3"
   },
