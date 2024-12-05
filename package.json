@@ -47,7 +47,7 @@
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-connect": "^2.1.0",
     "grunt-contrib-cssmin": "^3.0.0",
-    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-contrib-jshint": "^3.0.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-conventional-changelog": "^6.1.0",
     "grunt-npm": "0.0.2",
